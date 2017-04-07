@@ -1,6 +1,14 @@
 # Newsreader
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+using the command 
+
+```
+#!typescript
+
+ng new newsreader --dry-run true --skip-tests true --prefix nw --routing true
+
+```
 
 ## Development server
 
