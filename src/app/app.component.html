@@ -1,4 +1,19 @@
 <h1>
   {{title}}
+
 </h1>
+<li *ngFor="let currentnews of news ">
+<h3>
+{{currentnews.title}} <br/>
+</h3>
+<label >Description:</label>
+<label>{{currentnews.description}}</label> <br/>
+<label >Date:</label>
+<label>{{currentnews.publishedAt}}</label> <br/>
+<label >Image:</label>
+<img src="{{currentnews.urlToImage}}" alt=""/>
+ <br/>
+
+</li>
+
 <router-outlet></router-outlet>
