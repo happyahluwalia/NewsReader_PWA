@@ -1,30 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response } from '@angular/http';
 
+import {MdTabsModule} from '@angular/material';
+
 import { DataService } from './shared/data.service';
 import { News } from './model/news.model';
 
 @Component({
-  selector: 'nw-root',
+  selector: 'body',
+ // template: '<h1>{{title}}</h1>'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  // Add 'implements OnInit' to the class.
 
+  title = 'News';
   public news: News[];
-  public title = 'Customized News';
+  navLinks = ['Favorites', 'Preferences', 'Help', 'About'];
+  Topics = [{title: '  Technology'}, {title: 'General News'}, {title: 'Sports'}, ];
+  favoriteTopic = [];
   constructor(public dataService: DataService, private http: Http) {}
 
   ngOnInit() {
-     this.dataService.getNews().subscribe(
+    /* this.dataService.getNews(topic.title).subscribe(
        (data: any[] ) => this.news = data,
        (error) => console.log(error)
-     )
+     )*/
+     this.getSelectedTopic({title: 'default'});
+     this.favoriteTopic = this.dataService.getFavoriteTopic();
 
   }
+  getSelectedTopic(topic) {
+    this.dataService.getNews(topic).subscribe(
+       (data: any[] ) => this.news = data,
+       (error) => console.log(error)
+     );
+    }
 
+  openMenuDialog() {
+   // menu.show();
+  }
 
 
 }

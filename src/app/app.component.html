@@ -1,7 +1,110 @@
-<h1>
+<!--<h1>
   {{title}}
+</h1>-->
 
-</h1>
+<md-card fxLayout="column" fxFlex >
+
+  <md-toolbar color="primary" >
+    <span  fxFlex="center center">News</span>
+    <span ></span>
+    <span>
+     <md-menu #themeMenu x-position="after">
+        ...
+      </md-menu>
+
+      <button md-fab (click)="sidenav.open()" >
+        <md-icon>Menu</md-icon>
+      </button>
+    </span>
+  </md-toolbar>
+
+  <md-sidenav-container fxFlex>
+
+    <md-sidenav mode="side" #sidenav>
+      <md-nav-list>
+        <md-list-item *ngFor="let link of navLinks" (click)="getSelectedTopic(topic)">
+            <span>{{ link }}</span>
+        </md-list-item>
+      </md-nav-list>
+    </md-sidenav>
+
+        <md-card  *ngFor="let currentnews of news" fxLayout="row"
+              fxLayout.sm="column"
+              fxLayoutGap="16px">
+          <md-card fxFlex="90" >
+          <div fxLayout="row" >
+              <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
+              <md-card-header fxFlex>
+                <md-card-title>{{currentnews.title}}</md-card-title>
+                <md-card-subtitle>{{currentnews.publishedAt}}</md-card-subtitle>
+              </md-card-header>
+          </div>
+          <div >
+            <br/>
+            <md-card-content >
+                {{currentnews.description}}
+            </md-card-content>
+          </div>
+          </md-card>
+          <md-card fxFlex fxLayout="column" fxLayoutGap="20px" fxFlexFill>
+            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Set Favorit?</md-slide-toggle>
+            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Share</md-slide-toggle>
+          </md-card>
+        </md-card>
+
+  </md-sidenav-container>
+
+</md-card>
+
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+<nav md-tab-nav-bar >
+  <a md-tab-link
+     *ngFor="let topic of (favoriteTopic | async)"
+     (click)="getSelectedTopic(topic)">
+    {{topic}}
+  </a>
+</nav>
+</div>
+
+
+<!--<nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let topic of navLinks"
+     [routerLink]="topic"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="true">
+    {{topic}}
+  </a>
+</nav>-->
+<router-outlet></router-outlet>
+
+  <!--<md-card fxFlex="80"
+     *ngFor="let currentnews of news">
+    <h2>{{currentnews.title}}</h2>
+    <p>{{currentnews.description}}</p>
+  </md-card>
+-->
+
+
+<!--    <div class="content">
+      <li *ngFor="let currentnews of news ">
+        <h3>
+        {{currentnews.title}} <br/>
+        </h3>
+        <label >Description:</label>
+        <label>{{currentnews.description}}</label> <br/>
+        <label >Date:</label>
+        <label>{{currentnews.publishedAt}}</label> <br/>
+        <label >Image:</label>
+        <img src="{{currentnews.urlToImage}}" alt=""/>
+        <br/>
+        </li>
+    </div>
+-->
+
+
+
+<!--
 <li *ngFor="let currentnews of news ">
 <h3>
 {{currentnews.title}} <br/>
@@ -17,3 +120,4 @@
 </li>
 
 <router-outlet></router-outlet>
+-->

@@ -10,6 +10,16 @@ ng new newsreader --dry-run true --skip-tests true --prefix nw --routing true
 
 ```
 
+# Step 1 - Setup a service to get news and display on the ui.
+
+# Step 2 - Beautify the UI using angular material and also create a preferences section
+https://github.com/EladBezalel/material2-start/blob/workshop/steps/STEP_1.md
+
+
+Install Angular Material dependencies
+# Ref https://github.com/angular/material2/blob/master/guides/getting-started.md
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
