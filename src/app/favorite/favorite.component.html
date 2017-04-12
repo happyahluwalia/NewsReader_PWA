@@ -1,0 +1,9 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+<nav md-tab-nav-bar >
+  <a md-tab-link
+     *ngFor="let category of (favoriteCategories | async)"
+     (click)="getSelectedNewsCategory(category)">
+    {{category}}
+  </a>
+</nav>
+</div>

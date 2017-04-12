@@ -1,0 +1,9 @@
+<nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let topic of navLinks"
+     [routerLink]="topic"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="true">
+    {{topic}}
+  </a>
+</nav>

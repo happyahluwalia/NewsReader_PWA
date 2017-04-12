@@ -38,7 +38,7 @@ getNews(newsTopic: string) {
         );
   }
 
- getFavoriteTopic() {
+ getFavoriteCategories() {
    return Observable.create(function(observer){
      observer.next(['Technology', 'General News', 'Sports']);
    });
