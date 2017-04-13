@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
+import {MdIconRegistry} from '@angular/material';
+import {MdTooltipModule} from '@angular/material';
 
 import { News } from '../model/news.model';
 import { DataService } from '../shared/data.service';

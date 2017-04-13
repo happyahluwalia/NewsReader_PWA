@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MdIconRegistry} from '@angular/material';
 
 @Component({
   selector: 'nw-header',
@@ -12,4 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+ navigate(caller: string) {
+   alert(caller + ' clicked');
+ }
 }

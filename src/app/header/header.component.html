@@ -1,15 +1,28 @@
  <md-toolbar color="primary" >
-    <span  fxFlex="center center">News</span>
-    <span ></span>
-    <span>
-     <md-menu #themeMenu x-position="after">
-        ...
-      </md-menu>
+    <button md-icon-button [mdMenuTriggerFor]="theMenu" (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
 
+    <span  fxFlex>News</span>
+    <span fxFlex></span>
+    <button md-icon-button [mdMenuTriggerFor]="theMenu">
+          <md-icon>more_vert</md-icon>
+    </button>
+
+</md-toolbar>
+
+     <md-menu #theMenu x-position="before">
+        <button md-menu-item (click)="navigate('Preference')">Preferences</button>
+        <button md-menu-item (click)="x">Favorite</button>
+        <button md-menu-item (click)="x">Help</button>
+        <button md-menu-item (click)="x">About</button>
+        <button md-menu-item (click)="x">Login</button>
+      </md-menu>
+<!--
       <button md-fab (click)="sidenav.open()" >
         <md-icon>Menu</md-icon>
       </button>
-    </span>
-  </md-toolbar>
+    </span>-->
+
 
 

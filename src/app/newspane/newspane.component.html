@@ -25,8 +25,30 @@
           </div>
           </md-card>
           <md-card fxFlex fxLayout="column" fxLayoutGap="20px" fxFlexFill>
-            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Set Favorit?</md-slide-toggle>
-            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Share</md-slide-toggle>
+            <!--https://material.angular.io/components/component/tooltip-->
+
+                <i class="material-icons md-dark orange600 example-tooltip-host"
+                       mdTooltip="Add to Favorites"
+                       [mdTooltipPosition]="'above'" >
+                  favorite
+                </i>
+
+                <i class="material-icons md-dark md-inactive">favorite</i>
+
+                <i class="material-icons md-dark orange600 example-tooltip-host"
+                       mdTooltip="Bookmark news"
+                       [mdTooltipPosition]="'above'" >
+                  bookmark
+                </i>
+                <i class="material-icons md-dark orange600 example-tooltip-host"
+                  mdTooltip="Share news"
+                       [mdTooltipPosition]="'above'" >
+                  share</i>
+
+
+            <!--<md-slide-toggle [(ngModel)]="currentnews.publishedAt">Set Favorit?</md-slide-toggle>
+            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Share</md-slide-toggle>-->
+
           </md-card>
         </md-card>
 
