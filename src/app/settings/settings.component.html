@@ -1,9 +1,15 @@
-<nav md-tab-nav-bar>
-  <a md-tab-link
-     *ngFor="let topic of navLinks"
-     [routerLink]="topic"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="true">
-    {{topic}}
-  </a>
-</nav>
+
+    <ng-template md-tab-label>
+      News topics
+    </ng-template>
+    <form>
+        <h2>Select news topics</h2>
+        <md-checkbox #newsCategory *ngFor="let category of newsCategories" >{{category}} </md-checkbox>
+        <br>
+        <h2>Select news sources</h2>
+        <md-checkbox #newsSource *ngFor="let source of newsSources" >{{source}} </md-checkbox>
+        <br>
+        <h2>Number of new articles of each topic</h2>
+        <md-slider #numberofArticles min="1" max="5" step="1" tickInterval="auto"  thumbLabel></md-slider>
+        <button md-button (click)="onSaveSettings(newsCategory, newsSource, numberofArticles)">Save</button>
+    </form>

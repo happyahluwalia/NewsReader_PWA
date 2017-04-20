@@ -20,6 +20,9 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SocialShareComponent } from './shared/social-share/social-share.component';
 import { SocialDirective } from './shared/social-share/social.directive';
+import { PersonalPreferencesService } from './shared/personal-preferences.service';
+import { HelpComponent } from './static/help/help.component';
+import { AboutComponent } from './static/about/about.component';
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { SocialDirective } from './shared/social-share/social.directive';
     HomeComponent,
     SettingsComponent,
     SocialShareComponent,
-    SocialDirective
+    SocialDirective,
+    HelpComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { SocialDirective } from './shared/social-share/social.directive';
     BrowserAnimationsModule,
     ShareButtonModule
   ],
-  providers: [DataService, Title],
+  providers: [DataService, Title, PersonalPreferencesService],
   bootstrap: [AppComponent],
   entryComponents: [SocialShareComponent]
 })

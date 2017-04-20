@@ -1,3 +1,5 @@
+import { AboutComponent } from './static/about/about.component';
+import { HelpComponent } from './static/help/help.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,12 +23,17 @@ const routes: Routes = [
   },
   {
     path: 'help',
-    component: SettingsComponent
+    component: HelpComponent
   },
   {
     path: 'about',
-    component: SettingsComponent
+    component: AboutComponent
   },
+  {
+    path: 'help',
+    redirectTo: 'static/help.html'
+
+  }
 ];
 
 @NgModule({

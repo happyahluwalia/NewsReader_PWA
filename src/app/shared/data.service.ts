@@ -15,6 +15,7 @@ export class DataService {
   private technologySource = ['the-next-web', 'hacker-news'];
   private newsSource = ['bbc-news', 'cnn'];
   private sportsSource = ['bbc-sport', 'football-italia'];
+  private newsCategories = ['General', 'Technology', 'Sports', 'Nature', 'Science'];
 
   private apiKey = '22c53888f1e84cee94131f5837cbfeda';
   constructor(private http: Http) { }
@@ -53,5 +54,12 @@ getNews(newsTopic: string) {
      }
  }
 
+  getNewsCategories() {
+    return this.newsCategories;
+  }
+
+  getNewsSources() {
+     return Array.prototype.concat(this.newsSource, this.sportsSource, this.technologySource);
+  }
 
 }
