@@ -1,0 +1,33 @@
+<h1 md-dialog-title>Share using</h1>
+
+<md-dialog-content>
+  <md-list *ngIf="values">
+    <md-list-item *ngFor="let value of values">{{ value }}</md-list-item>
+  </md-list>
+    <button md-raised-button appShareButton [shareButton]="'twitter'"
+     [sbUrl]="url" [sbTitle]="title" (sbPopupClosed)="popupClosed()" >
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x"></i>
+                  </span>
+          </button>
+    <button md-raised-button appShareButton [shareButton]="'whatsapp'"
+         [sbUrl]="url" [sbTitle]="title" (sbPopupClosed)="popupClosed()" >
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-whatsapp fa-stack-1x"></i>
+                  </span>
+          </button>
+    <button md-raised-button appShareButton [shareButton]="'facebook'"
+         [sbUrl]="url" [sbTitle]="title" (sbPopupClosed)="popupClosed()" >
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x"></i>
+                  </span>
+      </button>
+</md-dialog-content>
+
+<md-dialog-actions>
+    <button md-button md-dialog-close>Close</button>
+
+</md-dialog-actions>

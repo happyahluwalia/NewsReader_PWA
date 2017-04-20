@@ -9,11 +9,11 @@
         <md-card  *ngFor="let currentnews of news" fxLayout="row"
               fxLayout.sm="column"
               fxLayoutGap="16px">
-          <md-card fxFlex="90" >
+          <md-card  >
           <div fxLayout="row" >
               <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
               <md-card-header fxFlex>
-                <md-card-title>{{currentnews.title}}</md-card-title>
+                <md-card-title (click)="navigate(currentnews.url)" >{{currentnews.title}}</md-card-title>
                 <md-card-subtitle>{{currentnews.publishedAt}}</md-card-subtitle>
               </md-card-header>
           </div>
@@ -23,9 +23,29 @@
                 {{currentnews.description}}
             </md-card-content>
           </div>
-          </md-card>
-          <md-card fxFlex fxLayout="column" fxLayoutGap="20px" fxFlexFill>
+          <md-card-actions>
             <!--https://material.angular.io/components/component/tooltip-->
+              <i class="material-icons md-dark orange600 example-tooltip-host"
+                  mdTooltip="Share news"
+                       [mdTooltipPosition]="'above'"
+                       (click)="openSharePopup(currentnews.url, currentnews.title)" >
+                  share</i>
+                  <i *ngIf="currentnews.publishedAt" (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                          class="material-icons md-dark orange600"
+                          mdTooltip="Mark Unfavorite"
+                       [mdTooltipPosition]="'above'">
+                       favorite
+                  </i>
+                  <i *ngIf="!currentnews.publishedAt" (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                          class="material-icons md-dark md-inactive"
+                          mdTooltip="Mark Favorite"
+                       [mdTooltipPosition]="'above'">
+                       favorite
+                  </i>
+          </md-card-actions>
+      </md-card>
+         <!-- <md-card fxFlex fxLayout="column" fxLayoutGap="20px" fxFlexFill>
+
 
                 <i class="material-icons md-dark orange600 example-tooltip-host"
                        mdTooltip="Add to Favorites"
@@ -40,16 +60,9 @@
                        [mdTooltipPosition]="'above'" >
                   bookmark
                 </i>
-                <i class="material-icons md-dark orange600 example-tooltip-host"
-                  mdTooltip="Share news"
-                       [mdTooltipPosition]="'above'" >
-                  share</i>
 
 
-            <!--<md-slide-toggle [(ngModel)]="currentnews.publishedAt">Set Favorit?</md-slide-toggle>
-            <md-slide-toggle [(ngModel)]="currentnews.publishedAt">Share</md-slide-toggle>-->
-
-          </md-card>
+          </md-card>-->
         </md-card>
 
 <nw-favorite (onCategorySelection)="getSelectedTopic($event)"></nw-favorite>

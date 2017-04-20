@@ -5,18 +5,22 @@
 
     <span  fxFlex>News</span>
     <span fxFlex></span>
-    <button md-icon-button [mdMenuTriggerFor]="theMenu">
-          <md-icon>more_vert</md-icon>
+    <button md-icon-button (click)="goHome()">
+          <md-icon>home</md-icon>
     </button>
 
 </md-toolbar>
 
      <md-menu #theMenu x-position="before">
-        <button md-menu-item (click)="navigate('Preference')">Preferences</button>
-        <button md-menu-item (click)="x">Favorite</button>
-        <button md-menu-item (click)="x">Help</button>
-        <button md-menu-item (click)="x">About</button>
-        <button md-menu-item (click)="x">Login</button>
+        <button md-menu-item [routerLink]="['/settings']">
+              <md-icon>settings</md-icon>Settings</button>
+        <button md-menu-item [routerLink]="['favorite']" routerLinkActive="active">
+              <md-icon>favorite</md-icon>  Favorite</button>
+        <button md-menu-item [routerLink]="['/help']">
+              <md-icon>help</md-icon>  Help</button>
+        <button md-menu-item [routerLink]="['/about']">
+               <md-icon>business</md-icon> About</button>
+        <!--<button md-menu-item [routerLink]="['/favorite']">Login</button>-->
       </md-menu>
 <!--
       <button md-fab (click)="sidenav.open()" >

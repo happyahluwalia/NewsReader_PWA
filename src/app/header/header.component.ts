@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {MdIconRegistry} from '@angular/material';
 
@@ -8,12 +9,12 @@ import {MdIconRegistry} from '@angular/material';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
- navigate(caller: string) {
-   alert(caller + ' clicked');
+ goHome() {
+    this.router.navigate(['']);
  }
 }

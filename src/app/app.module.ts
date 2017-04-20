@@ -1,3 +1,4 @@
+import { ShareButtonModule } from './sharebutton/share-button.module';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,9 @@ import { NewspaneComponent } from './newspane/newspane.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SocialShareComponent } from './shared/social-share/social-share.component';
+import { SocialDirective } from './shared/social-share/social.directive';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { SettingsComponent } from './settings/settings.component';
     NewspaneComponent,
     FavoriteComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    SocialShareComponent,
+    SocialDirective
   ],
   imports: [
     BrowserModule,
@@ -34,10 +40,12 @@ import { SettingsComponent } from './settings/settings.component';
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ShareButtonModule
   ],
   providers: [DataService, Title],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SocialShareComponent]
 })
 export class AppModule { }
 
@@ -46,4 +54,7 @@ export class AppModule { }
 // TODO : Rename news pane to content pane, this will show either news or preference or favorite ... based on who is calling it
 // TODO : Need to have the favorite topic section remain fixed while the news scrolls
 // TODO : On selecting a favorite topic the news panel should scroll to the top
+// TODO : Fixup UI when no http connection
+// TODO : Fix the social share component into a different module such that it does not get loaded with app module,
+//        Refer to notes on AOT compilation - https://material.angular.io/components/component/dialog
 
