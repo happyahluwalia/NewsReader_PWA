@@ -2,14 +2,35 @@
     <ng-template md-tab-label>
       News topics
     </ng-template>
-    <form>
-        <h2>Select news topics</h2>
-        <md-checkbox #newsCategory *ngFor="let category of newsCategories" >{{category}} </md-checkbox>
+ <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+<md-tab-group>
+  <md-tab *ngFor="let news of newsList; let i=index"
+            label={{news.category}}
+            ngModelGroup={{news.category}}
+            #{{news.category}}="ngModelGroup"
+            >
+      <h3 color="accent">Select news sources</h3>
         <br>
-        <h2>Select news sources</h2>
-        <md-checkbox #newsSource *ngFor="let source of newsSources" >{{source}} </md-checkbox>
+         <section class="example-section" ngModelGroup="news">
+              <md-checkbox ngModel class="example-margin"
+                           name={{news.category}}_{{x}}
+                          *ngFor="let source of news.source; let x=index"
+                           [(ngModel)]="source.subscribed">
+                  {{source.name}}
+              </md-checkbox>
+          </section>
+
+        <h3>Number of new articles of each topic</h3>
+        <md-slider ngModel name="numberofArticles_{{i}}"
+                  min="1" max="5" step="1"
+                  value={{news.NoOfArticles}} tickInterval="auto"
+                  thumbLabel>
+        </md-slider>
         <br>
-        <h2>Number of new articles of each topic</h2>
-        <md-slider #numberofArticles min="1" max="5" step="1" tickInterval="auto"  thumbLabel></md-slider>
-        <button md-button (click)="onSaveSettings(newsCategory, newsSource, numberofArticles)">Save</button>
-    </form>
+    </md-tab>
+  </md-tab-group>
+  <br>
+  <button md-raised-button color="primary" type="submit" >Save</button>
+ </form>
+

@@ -30,13 +30,15 @@
                        [mdTooltipPosition]="'above'"
                        (click)="openSharePopup(currentnews.url, currentnews.title)" >
                   share</i>
-                  <i *ngIf="currentnews.publishedAt" (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                  <i *ngIf="currentnews.publishedAt"
+                          (click)="currentnews.publishedAt = !currentnews.publishedAt"
                           class="material-icons md-dark orange600"
                           mdTooltip="Mark Unfavorite"
                        [mdTooltipPosition]="'above'">
                        favorite
                   </i>
-                  <i *ngIf="!currentnews.publishedAt" (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                  <i *ngIf="!currentnews.publishedAt"
+                          (click)="currentnews.publishedAt = !currentnews.publishedAt"
                           class="material-icons md-dark md-inactive"
                           mdTooltip="Mark Favorite"
                        [mdTooltipPosition]="'above'">

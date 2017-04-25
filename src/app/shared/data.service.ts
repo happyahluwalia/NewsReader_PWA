@@ -1,3 +1,5 @@
+import { NewsPref } from './NewsPref';
+import { DefaultNews } from './defaultNews';
 import { Injectable } from '@angular/core';
 import {Http, Response } from '@angular/http';
 
@@ -55,7 +57,14 @@ getNews(newsTopic: string) {
  }
 
   getNewsCategories() {
-    return this.newsCategories;
+     let categoryArray: string[] = [];
+     const news = DefaultNews.defaultNews;
+     news.forEach(element => {
+       categoryArray.push(element.category);
+     });
+
+    return categoryArray;
+    //return this.newsCategories;
   }
 
   getNewsSources() {

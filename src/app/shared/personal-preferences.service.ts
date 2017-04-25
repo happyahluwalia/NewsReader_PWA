@@ -6,7 +6,8 @@ export class PersonalPreferencesService {
   constructor() { }
 
   getUserTopics() {
-
+    // TODO : Check from cache
+    //  return
   }
 
   saveUserTopics(topics: any[]) {

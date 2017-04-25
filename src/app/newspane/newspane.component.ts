@@ -33,7 +33,7 @@ export class NewspaneComponent implements OnInit {
   }
   getSelectedTopic(topic) {
     this.dataService.getNews(topic).subscribe(
-       (data: any[] ) => {this.news = data.splice(0, 4); console.log(this.news); },
+       (data: any[] ) => this.news = data.splice(0, 4),
        (error) => console.log(error)
      );
     }
