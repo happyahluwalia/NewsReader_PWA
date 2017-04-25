@@ -1,5 +1,7 @@
+import { SocialShareComponent } from './../shared/social-share/social-share.component';
+import { MdDialog } from '@angular/material';
+import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DataService } from './../shared/data.service';
 import { News } from './../model/news.model';
 
 @Component({
@@ -9,17 +11,37 @@ import { News } from './../model/news.model';
 })
 export class FavoriteComponent implements OnInit {
 
-  favoriteCategories = [];
+  favorites = [];
   // news: News[];
   @Output() onCategorySelection = new EventEmitter<string>();
 
-  constructor(private dataService: DataService) { }
+  constructor(private personalPreference: PersonalPreferencesService,
+              private dialog: MdDialog) { }
 
   ngOnInit() {
-     this.favoriteCategories = this.dataService.getFavoriteCategories();
+     this.favorites = this.personalPreference.getUserFavorites();
 
   }
   getSelectedNewsCategory(topic) {
     this.onCategorySelection.emit(topic);
   }
+
+  openSharePopup(url, title) {
+      const dialogRef = this.dialog.open(SocialShareComponent);
+      dialogRef.componentInstance.title = title;
+      dialogRef.componentInstance.url = url;
+      dialogRef.afterClosed()
+        .subscribe(result => console.log(result));
+  }
+
+  markFavorite(currentNews: News) {
+     currentNews.favorite = true;
+     this.personalPreference.saveUserFavorite(currentNews);
+  }
+
+  unmarkFavorite(currentNews: News) {
+     currentNews.favorite = false;
+     this.personalPreference.removeUserFavorite(currentNews);
+  }
+
 }

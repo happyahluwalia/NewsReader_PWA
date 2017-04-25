@@ -1,5 +1,6 @@
+import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { SocialShareComponent } from './../shared/social-share/social-share.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -14,11 +15,12 @@ import { DataService } from '../shared/data.service';
   templateUrl: './newspane.component.html',
   styleUrls: ['./newspane.component.css']
 })
-export class NewspaneComponent implements OnInit {
+export class NewspaneComponent implements OnInit, OnDestroy {
   news: News[];
   favoriteTopic = [];
   navLinks = ['Favorites', 'Preferences', 'Help', 'About'];
   constructor(public dataService: DataService,
+              public personalPreference: PersonalPreferencesService,
               private http: Http,
               private router1: Router,
               private dialog: MdDialog ) {}
@@ -29,8 +31,15 @@ export class NewspaneComponent implements OnInit {
        (error) => console.log(error)
      )*/
      this.getSelectedTopic({title: 'default'});
-     this.favoriteTopic = this.dataService.getFavoriteCategories();
+     // this.favoriteTopic = this.dataService.getFavoriteCategories();
   }
+
+  ngOnDestroy() {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+
+  }
+
   getSelectedTopic(topic) {
     this.dataService.getNews(topic).subscribe(
        (data: any[] ) => this.news = data.splice(0, 4),
@@ -44,6 +53,16 @@ export class NewspaneComponent implements OnInit {
       dialogRef.componentInstance.url = url;
       dialogRef.afterClosed()
         .subscribe(result => console.log(result));
+  }
+
+  markFavorite(currentNews: News) {
+     currentNews.favorite = true;
+     this.personalPreference.saveUserFavorite(currentNews);
+  }
+
+  unmarkFavorite(currentNews: News) {
+     currentNews.favorite = false;
+     this.personalPreference.removeUserFavorite(currentNews);
   }
 
 }

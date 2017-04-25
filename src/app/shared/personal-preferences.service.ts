@@ -1,7 +1,10 @@
+import { News } from './../model/news.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PersonalPreferencesService {
+
+  userFavorites: News[] = [];
 
   constructor() { }
 
@@ -15,15 +18,16 @@ export class PersonalPreferencesService {
   }
 
   getUserFavorites() {
-
+    return this.userFavorites;
   }
 
-  saveUserFavorite() {
-
+  saveUserFavorite(newFavorite: News) {
+      this.userFavorites.push(newFavorite);
   }
 
-  removeUserFavorite() {
-
+  removeUserFavorite(oldFavorite: News) {
+      const index = this.userFavorites.indexOf(oldFavorite);
+      this.userFavorites.splice(index, 1);
   }
 
 }

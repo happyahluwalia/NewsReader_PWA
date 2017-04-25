@@ -1,1 +1,10 @@
 I am the friendly help page
+<h2>
+  Pending items
+</h2>
+
+<md-list dense>
+    <md-list-item *ngFor="let item of items">
+        {{item}}
+    </md-list-item>
+</md-list>

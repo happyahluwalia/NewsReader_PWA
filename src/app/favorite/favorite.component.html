@@ -1,10 +1,49 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" >
-<nav md-tab-nav-bar >
-
-  <a md-tab-link
-     *ngFor="let category of (favoriteCategories | async)"
-     (click)="getSelectedNewsCategory(category)">
-    {{category}}
-  </a>
-</nav>
-</div>
+  <md-card  *ngFor="let currentnews of favorites" fxLayout="row"
+              fxLayout.sm="column"
+              fxLayoutGap="16px">
+          <md-card  >
+          <div fxLayout="row" >
+              <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
+              <md-card-header fxFlex>
+                <md-card-title (click)="navigate(currentnews.url)" >{{currentnews.title}}</md-card-title>
+                <md-card-subtitle>{{currentnews.publishedAt}}</md-card-subtitle>
+              </md-card-header>
+          </div>
+          <div >
+            <br/>
+            <md-card-content >
+                {{currentnews.description}}
+            </md-card-content>
+          </div>
+          <md-card-actions>
+            <!--https://material.angular.io/components/component/tooltip-->
+              <i class="material-icons md-dark orange600 example-tooltip-host"
+                  mdTooltip="Share news"
+                       [mdTooltipPosition]="'above'"
+                       (click)="openSharePopup(currentnews.url, currentnews.title)" >
+                  share</i>
+                  <i *ngIf="currentnews.favorite"
+                          (click)="unmarkFavorite(currentnews)"
+                          class="material-icons md-dark orange600"
+                          mdTooltip="Mark Unfavorite"
+                       [mdTooltipPosition]="'above'">
+                       favorite
+                  </i>
+                  <i *ngIf="!currentnews.favorite"
+                          (click)="markFavorite(currentnews)"
+                          class="material-icons md-dark md-inactive"
+                          mdTooltip="Mark Favorite"
+                       [mdTooltipPosition]="'above'">
+                       favorite
+                  </i>
+          </md-card-actions>
+      </md-card>
+  </md-card>
+  <md-card *ngIf="favorites.length === 0" >
+    <div fxLayout="row" >
+        <md-card-header fxFlex>
+          <md-card-title >No Favorites</md-card-title>
+          <md-card-subtitle>You currently have no favorites please add few</md-card-subtitle>
+        </md-card-header>
+    </div>
+  </md-card>

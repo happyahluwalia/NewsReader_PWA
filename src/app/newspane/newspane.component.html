@@ -30,15 +30,15 @@
                        [mdTooltipPosition]="'above'"
                        (click)="openSharePopup(currentnews.url, currentnews.title)" >
                   share</i>
-                  <i *ngIf="currentnews.publishedAt"
-                          (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                  <i *ngIf="currentnews.favorite"
+                          (click)="unmarkFavorite(currentnews)"
                           class="material-icons md-dark orange600"
                           mdTooltip="Mark Unfavorite"
                        [mdTooltipPosition]="'above'">
                        favorite
                   </i>
-                  <i *ngIf="!currentnews.publishedAt"
-                          (click)="currentnews.publishedAt = !currentnews.publishedAt"
+                  <i *ngIf="!currentnews.favorite"
+                          (click)="markFavorite(currentnews)"
                           class="material-icons md-dark md-inactive"
                           mdTooltip="Mark Favorite"
                        [mdTooltipPosition]="'above'">
@@ -46,25 +46,6 @@
                   </i>
           </md-card-actions>
       </md-card>
-         <!-- <md-card fxFlex fxLayout="column" fxLayoutGap="20px" fxFlexFill>
-
-
-                <i class="material-icons md-dark orange600 example-tooltip-host"
-                       mdTooltip="Add to Favorites"
-                       [mdTooltipPosition]="'above'" >
-                  favorite
-                </i>
-
-                <i class="material-icons md-dark md-inactive">favorite</i>
-
-                <i class="material-icons md-dark orange600 example-tooltip-host"
-                       mdTooltip="Bookmark news"
-                       [mdTooltipPosition]="'above'" >
-                  bookmark
-                </i>
-
-
-          </md-card>-->
-        </md-card>
+   </md-card>
 
 <nw-favorite (onCategorySelection)="getSelectedTopic($event)"></nw-favorite>
