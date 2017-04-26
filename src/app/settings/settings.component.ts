@@ -1,3 +1,5 @@
+import { NewsPref } from './../shared/NewsPref';
+import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { DefaultNews } from './../shared/defaultNews';
 import { DataService } from './../shared/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -9,16 +11,21 @@ import { NgForm, FormGroup, AbstractControl } from '@angular/forms';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  private newsList: any[];
+  private newsList: NewsPref[];
 
   @ViewChild('f') settingsForm: NgForm;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private personalPreferencesService: PersonalPreferencesService) { }
 
   ngOnInit() {
     // TODO: Get these values from cache if not then get the global values
     // These would be observables that on return would set the settingsForm values
-      this.newsList = DefaultNews.defaultNews;
+      this.newsList = this.personalPreferencesService.getUserSettings();
+      // If no usersettings saved then get the default
+      if (this.newsList.length === 0) {
+            this.newsList = DefaultNews.defaultNews;
+      }
 
       // this.settingsForm.valueChanges.subscribe(value =>  console.log('value changed ' + value));
         // console.log(this.settingsForm.controls);
@@ -30,9 +37,7 @@ export class SettingsComponent implements OnInit {
             const myControls = f.controls;
             let i = 0;
             // Update the user preferences based on what he selected on the ui
-            const defaultCategories = DefaultNews.defaultNews;
-
-            defaultCategories.forEach(element => {
+            this.newsList.forEach(element => {
                // Check if the news category is dirty - i.e. each Tab on the UI
                 if ((myControls[element.category]).dirty) {
                    // check if news websites were touched i.e. if any checkbox from the group is updated
@@ -56,11 +61,7 @@ export class SettingsComponent implements OnInit {
                 }
             });
       }
+     this.personalPreferencesService.saveUserSettings(this.newsList);
   }
-  onSaveSettings(newsCategory, newsSource, numberofArticles) {
-    console.log(newsCategory);
-    console.log(newsSource);
-    console.log(numberofArticles);
 
-  }
 }

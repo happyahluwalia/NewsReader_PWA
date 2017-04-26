@@ -19,9 +19,11 @@ export class FavoriteComponent implements OnInit {
               private dialog: MdDialog) { }
 
   ngOnInit() {
+     this.personalPreference.getUserFavoritesfromStorage();
      this.favorites = this.personalPreference.getUserFavorites();
 
   }
+
   getSelectedNewsCategory(topic) {
     this.onCategorySelection.emit(topic);
   }

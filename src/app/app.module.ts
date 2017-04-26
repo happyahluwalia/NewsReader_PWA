@@ -24,6 +24,7 @@ import { PersonalPreferencesService } from './shared/personal-preferences.servic
 import { HelpComponent } from './static/help/help.component';
 import { AboutComponent } from './static/about/about.component';
 
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,11 @@ import { AboutComponent } from './static/about/about.component';
     FlexLayoutModule,
     BrowserAnimationsModule,
     ShareButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LocalStorageModule.withConfig({
+            prefix: 'new',
+            storageType: 'localStorage'
+        })
   ],
   providers: [DataService, Title, PersonalPreferencesService],
   bootstrap: [AppComponent],

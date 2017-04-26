@@ -32,12 +32,14 @@ export class NewspaneComponent implements OnInit, OnDestroy {
      )*/
      this.getSelectedTopic({title: 'default'});
      // this.favoriteTopic = this.dataService.getFavoriteCategories();
+     this.personalPreference.getUserFavoritesfromStorage();
+
   }
 
   ngOnDestroy() {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-
+    // this.personalPreference.setUserFavoritesinStorage();
   }
 
   getSelectedTopic(topic) {

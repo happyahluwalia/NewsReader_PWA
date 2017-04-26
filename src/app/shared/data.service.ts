@@ -57,7 +57,7 @@ getNews(newsTopic: string) {
  }
 
   getNewsCategories() {
-     let categoryArray: string[] = [];
+     const categoryArray: string[] = [];
      const news = DefaultNews.defaultNews;
      news.forEach(element => {
        categoryArray.push(element.category);
