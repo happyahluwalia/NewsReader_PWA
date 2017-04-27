@@ -64,7 +64,7 @@ getNews(newsTopic: string) {
      observer.next(['Technology', 'General News', 'Sports']);
    });
  }
- private getSource(newsTopic: string){
+ private getSource(newsTopic: string) {
      switch (newsTopic) {
         case 'Technology':
               return this.technologySource[0];
@@ -82,7 +82,7 @@ getNews(newsTopic: string) {
      });
 
     return categoryArray;
-    //return this.newsCategories;
+    // return this.newsCategories;
   }
 
   getNewsSources() {

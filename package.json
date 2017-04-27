@@ -7,9 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod --aot",
     "postinstall": "ng build --aot -prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "engines": {
   "node": "7.7.1",

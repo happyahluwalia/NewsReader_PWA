@@ -12,7 +12,7 @@ export class HelpComponent implements OnInit {
                       'Share the news on Facebook, twitter or Whatsapp',
                       'Using settings option - you can select the news source in each category',
                       'Got to Favorite screen and read thru all your favorites and unfavorite them when done.'
-                    ]
+                    ];
   constructor() { }
 
   ngOnInit() {

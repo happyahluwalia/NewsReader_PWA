@@ -65,7 +65,7 @@ export class PersonalPreferencesService {
 
   getHomePageNews(category: string) {
       let bgetDefaultHomePage = true;
-      let source: Observable<any>[] = [];
+      const source: Observable<any>[] = [];
 
       // Get users preferences
       const storedSettings = this.persistenceService.get('settings');

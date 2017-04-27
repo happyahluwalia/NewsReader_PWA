@@ -7,6 +7,7 @@ import { Helper } from 'app/sharebutton/helper/share-helper';
 import { Directive, Input, EventEmitter, Output, HostListener } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[appShareButton]'
 })
 export class ShareButtonDirective {

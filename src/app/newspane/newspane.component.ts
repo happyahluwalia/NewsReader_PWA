@@ -17,7 +17,7 @@ import { DataService } from '../shared/data.service';
   styleUrls: ['./newspane.component.css']
 })
 export class NewspaneComponent implements OnInit {
-  @Input() currentTopic: string = 'General';
+  @Input() currentTopic = 'General';
   news: News[] = [];
   favoriteTopic = [];
   navLinks = ['Favorites', 'Preferences', 'Help', 'About'];

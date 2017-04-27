@@ -13,11 +13,11 @@ export class ShareButtonService {
   // Window Object
   window: Window;
   // Optional Params
-  windowWidth: number = 500;
-  windowHeight: number = 400;
+  windowWidth = 500;
+  windowHeight = 400;
 
   // Site Twitter account - Add via @Twitter Account to the tweet
-  twitterAccount: string = 'appleofeye';
+  twitterAccount = 'appleofeye';
 
   constructor(window: WindowService, private http: Http) {
     this.window = window.nativeWindow;
