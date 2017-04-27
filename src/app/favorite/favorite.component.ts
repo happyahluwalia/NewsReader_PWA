@@ -46,4 +46,7 @@ export class FavoriteComponent implements OnInit {
      this.personalPreference.removeUserFavorite(currentNews);
   }
 
+  navigate(url: string) {
+    window.open(url);
+  }
 }

@@ -63,7 +63,7 @@ export class PersonalPreferencesService {
       this.persistenceService.set('settings', userSettings);
    }
 
-  getHomePageNews() {
+  getHomePageNews(category: string) {
       let bgetDefaultHomePage = true;
       let source: Observable<any>[] = [];
 
@@ -74,7 +74,7 @@ export class PersonalPreferencesService {
          Object.keys(storedSettings).map(key => {
                                  const myPref: NewsPref = storedSettings[key];
                                  // Find the home page urls he has subscribed too..
-                                 if (myPref.category === 'Home') {
+                                 if (myPref.category === category) {
                                       myPref.source.forEach(element => {
                                            if (element.subscribed) {
                                                 source.push(this.dataService.getNewswithURL(element.url));

@@ -6,7 +6,8 @@
               <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
               <md-card-header fxFlex>
                 <md-card-title (click)="navigate(currentnews.url)" >{{currentnews.title}}</md-card-title>
-                <md-card-subtitle>{{currentnews.publishedAt}}</md-card-subtitle>
+                <md-card-subtitle>{{currentnews.publishedAt | date: "MM/dd/yyyy hh:mm"}}</md-card-subtitle>
+
               </md-card-header>
           </div>
           <div >

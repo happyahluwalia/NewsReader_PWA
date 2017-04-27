@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { SocialShareComponent } from './../shared/social-share/social-share.component';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,8 @@ import { DataService } from '../shared/data.service';
   templateUrl: './newspane.component.html',
   styleUrls: ['./newspane.component.css']
 })
-export class NewspaneComponent implements OnInit, OnDestroy {
+export class NewspaneComponent implements OnInit {
+  @Input() currentTopic: string = 'General';
   news: News[] = [];
   favoriteTopic = [];
   navLinks = ['Favorites', 'Preferences', 'Help', 'About'];
@@ -27,20 +28,9 @@ export class NewspaneComponent implements OnInit, OnDestroy {
               private dialog: MdDialog ) {}
 
   ngOnInit() {
-    /* this.dataService.getNews(topic.title).subscribe(
-       (data: any[] ) => this.news = data,
-       (error) => console.log(error)
-     )*/
-    // this.getSelectedTopic({title: 'default'});
-    this.getHomePageNews();
+    this.getHomePageNews(this.currentTopic);
      this.personalPreference.getUserFavoritesfromStorage();
 
-  }
-
-  ngOnDestroy() {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    // this.personalPreference.setUserFavoritesinStorage();
   }
 
   getSelectedTopic(topic) {
@@ -50,8 +40,8 @@ export class NewspaneComponent implements OnInit, OnDestroy {
      );
     }
 
-  getHomePageNews() {
-    this.personalPreference.getHomePageNews().subscribe(
+  getHomePageNews(category: string) {
+    this.personalPreference.getHomePageNews(category).subscribe(
        (data: any[]) => this.news = this.news.concat(data),
        (error) => console.log('error getting home page')
     );
@@ -72,6 +62,10 @@ export class NewspaneComponent implements OnInit, OnDestroy {
   unmarkFavorite(currentNews: News) {
      currentNews.favorite = false;
      this.personalPreference.removeUserFavorite(currentNews);
+  }
+
+  navigate(url: string) {
+    window.open(url);
   }
 
 }

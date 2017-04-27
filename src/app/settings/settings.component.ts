@@ -5,6 +5,8 @@ import { DataService } from './../shared/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, AbstractControl } from '@angular/forms';
 
+import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+
 @Component({
   selector: 'nw-settings',
   templateUrl: './settings.component.html',
@@ -16,7 +18,8 @@ export class SettingsComponent implements OnInit {
   @ViewChild('f') settingsForm: NgForm;
 
   constructor(private dataService: DataService,
-              private personalPreferencesService: PersonalPreferencesService) { }
+              private personalPreferencesService: PersonalPreferencesService,
+              private snackBar: MdSnackBar) { }
 
   ngOnInit() {
     // TODO: Get these values from cache if not then get the global values
@@ -62,6 +65,9 @@ export class SettingsComponent implements OnInit {
             });
       }
      this.personalPreferencesService.saveUserSettings(this.newsList);
+     const config = new MdSnackBarConfig();
+     config.duration = 1000;
+     this.snackBar.open('Settings saved', '', config);
   }
 
 }
