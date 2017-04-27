@@ -4,7 +4,8 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: node:7.7.1
-clone: depth:full
+clone: 
+  depth:full
 pipelines:
   default:
     - step:
