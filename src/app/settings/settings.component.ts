@@ -13,7 +13,7 @@ import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  private newsList: NewsPref[];
+  newsList: NewsPref[];
 
   @ViewChild('f') settingsForm: NgForm;
 

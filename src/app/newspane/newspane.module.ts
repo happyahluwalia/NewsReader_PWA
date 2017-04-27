@@ -11,8 +11,8 @@ import { NewspaneComponent } from './newspane.component';
     CommonModule,
     MaterialModule,
     FlexLayoutModule
-  ],
+  ]
  // exports: [NewspaneComponent],
-  declarations: [NewspaneComponent]
+ // declarations: [NewspaneComponent]
 })
 export class NewspaneModule { }
