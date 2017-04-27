@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { SocialShareComponent } from './../shared/social-share/social-share.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -16,7 +17,7 @@ import { DataService } from '../shared/data.service';
   styleUrls: ['./newspane.component.css']
 })
 export class NewspaneComponent implements OnInit, OnDestroy {
-  news: News[];
+  news: News[] = [];
   favoriteTopic = [];
   navLinks = ['Favorites', 'Preferences', 'Help', 'About'];
   constructor(public dataService: DataService,
@@ -30,8 +31,8 @@ export class NewspaneComponent implements OnInit, OnDestroy {
        (data: any[] ) => this.news = data,
        (error) => console.log(error)
      )*/
-     this.getSelectedTopic({title: 'default'});
-     // this.favoriteTopic = this.dataService.getFavoriteCategories();
+    // this.getSelectedTopic({title: 'default'});
+    this.getHomePageNews();
      this.personalPreference.getUserFavoritesfromStorage();
 
   }
@@ -49,6 +50,12 @@ export class NewspaneComponent implements OnInit, OnDestroy {
      );
     }
 
+  getHomePageNews() {
+    this.personalPreference.getHomePageNews().subscribe(
+       (data: any[]) => this.news = this.news.concat(data),
+       (error) => console.log('error getting home page')
+    );
+  }
   openSharePopup(url, title) {
       const dialogRef = this.dialog.open(SocialShareComponent);
       dialogRef.componentInstance.title = title;

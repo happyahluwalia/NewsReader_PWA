@@ -24,7 +24,6 @@ export class DataService {
 
 
 getNews(newsTopic: string) {
-
   const source = this.getSource(newsTopic);
   return this.http.get('https://newsapi.org/v1/articles?source=' + source + '&apiKey=' + this.apiKey)
         .map(
@@ -39,6 +38,25 @@ getNews(newsTopic: string) {
               return Observable.throw('Http Error');
             }
         );
+  }
+
+  getNewswithURL(url: string) {
+     return this.http.get('https://newsapi.org/v1/articles?source=' + url + '&apiKey=' + this.apiKey)
+        .map(
+          (response: Response) => {
+                  const data = response.json().articles;
+                  return data;
+                }
+        )
+        .catch(
+            (error: Response) => {
+              console.log('Application : DataService - Error in DataService=>getNews()');
+              return Observable.throw('Http Error');
+            }
+        );
+  }
+  getDefaultNews() {
+    return this.getNews('General');
   }
 
  getFavoriteCategories() {

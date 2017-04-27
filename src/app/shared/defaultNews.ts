@@ -2,7 +2,7 @@ import { NewsPref } from './NewsPref';
 export class DefaultNews  {
 
    public static defaultNews: NewsPref[]= [{
-                  category : 'General',
+                  category : 'Home',
                   source : [{ name: 'ABC News', url: 'abc-news-au', subscribed: true},
                             { name: 'Associated Press', url: 'associated-press', subscribed: false},
                             { name: 'BBC News', url: 'bbc-news', subscribed: false},

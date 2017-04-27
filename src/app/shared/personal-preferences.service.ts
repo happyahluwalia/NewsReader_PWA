@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { DataService } from './data.service';
 import { NewsPref } from './NewsPref';
 import { News } from './../model/news.model';
 import { Injectable } from '@angular/core';
@@ -6,11 +8,13 @@ import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable()
 export class PersonalPreferencesService {
+    http: any;
 
   userFavorites: News[] = [];
   storedNewsPrefSettings: NewsPref[] = [];
 
-  constructor(private persistenceService: LocalStorageService) { }
+  constructor(private persistenceService: LocalStorageService,
+              private dataService: DataService) { }
 
   getUserTopics() {
     // TODO : Check from cache
@@ -58,4 +62,41 @@ export class PersonalPreferencesService {
    saveUserSettings(userSettings: NewsPref[]) {
       this.persistenceService.set('settings', userSettings);
    }
+
+  getHomePageNews() {
+      let bgetDefaultHomePage = true;
+      let source: Observable<any>[] = [];
+
+      // Get users preferences
+      const storedSettings = this.persistenceService.get('settings');
+      // console.log(storedSettings);
+      if (storedSettings) {
+         Object.keys(storedSettings).map(key => {
+                                 const myPref: NewsPref = storedSettings[key];
+                                 // Find the home page urls he has subscribed too..
+                                 if (myPref.category === 'Home') {
+                                      myPref.source.forEach(element => {
+                                           if (element.subscribed) {
+                                                source.push(this.dataService.getNewswithURL(element.url));
+                                              }
+                                        });
+                                    }
+                              });
+          // Just in case user has subscribed to none of the home page urls then we show the default.
+          if (source.length !== 0) {
+            bgetDefaultHomePage = false;
+          }
+
+          return Observable.merge(...source);
+          /*const source1 = this.dataService.getNews('Technology');
+          const source2 = this.dataService.getNews('Sports');
+          const tmp: Observable<any>[] = [source1, source2];
+          return Observable.merge(...tmp);*/
+        }
+        if (bgetDefaultHomePage) {
+            return this.dataService.getDefaultNews();
+        }
+
+
+  }
 }
