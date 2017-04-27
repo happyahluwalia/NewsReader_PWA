@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
     "postinstall": "ng build --aot -prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -14,7 +14,7 @@
   "engines": {
   "node": "7.7.1",
   "npm": "4.1.2"
-}
+},
   "private": true,
   "dependencies": {
     "@angular/cli": "1.0.0",
