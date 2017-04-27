@@ -28,11 +28,6 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
-  },
-  {
-    path: 'help',
-    redirectTo: 'static/help.html'
-
   }
 ];
 

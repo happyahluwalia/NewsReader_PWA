@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpComponent implements OnInit {
 
-  items: string[] = ['Make a footer for home page with a filter pipe on categories',
-                      'home page should get a news based on categories / preferences',
-                      'store preferences',
-                      'save favorites',
-                      '',
-                      'google analytics?'
+  items: string[] = ['Read news in various categories',
+                      'Mark favorite certain news item for reading later',
+                      'Share the news on Facebook, twitter or Whatsapp',
+                      'Using settings option - you can select the news source in each category',
+                      'Got to Favorite screen and read thru all your favorites and unfavorite them when done.'
                     ]
   constructor() { }
 
