@@ -6,7 +6,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --aot",
-    "postinstall": "ng build --aot -prod",
     "lint": "ng lint"
   },
   "engines": {
