@@ -4,7 +4,7 @@ import { MdDialogRef } from '@angular/material';
 @Component({
   selector: 'nw-social-share',
   templateUrl: './social-share.component.html',
-  styleUrls: ['./social-share.component.css']
+  styleUrls: ['./css/font-awesome.min.css']
 })
 export class SocialShareComponent implements OnInit {
   values;

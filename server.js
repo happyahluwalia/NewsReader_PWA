@@ -1,8 +1,11 @@
 // https://medium.com/@ryanchenkie_40935/angular-cli-deployment-host-your-angular-2-app-on-heroku-3f266f13f352
+const compression = require('compression');
 const path = require('path');
 const express = require('express');
 const app = express();
 
+// Use compression
+app.use(compression());
 // Run the app by serving static files in dist
 app.use(express.static(__dirname + '/dist'));
 
