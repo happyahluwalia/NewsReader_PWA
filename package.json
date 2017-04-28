@@ -10,16 +10,16 @@
     "postinstall": "ng build --aot -prod"
   },
   "engines": {
-  "node": "7.7.1",
-  "npm": "4.1.2"
+    "node": "7.7.1",
+    "npm": "4.1.2"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.0.0",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/animations": "^4.0.1",
+    "@angular/cli": "1.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/flex-layout": "^2.0.0-beta.7",
     "@angular/forms": "^4.0.0",
@@ -28,11 +28,12 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular-2-local-storage": "^1.0.1",
     "core-js": "^2.4.1",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4",
     "express": "^4.14.0",
-    "typescript": "~2.2.0"
+    "rxjs": "^5.1.0",
+    "typescript": "~2.2.0",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
