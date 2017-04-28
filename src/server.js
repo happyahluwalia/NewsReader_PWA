@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/dist'));
 
 // If an incoming requests anything other than https
 // then force it to use https
-const ForceSSL = functin() {
+const ForceSSL = function() {
   return function (req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
       return res.redirect(['https://', req.get('Host') + req.url].join(''));
