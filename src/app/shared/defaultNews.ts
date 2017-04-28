@@ -14,8 +14,8 @@ export class DefaultNews  {
                 {
                   category : 'Technology',
                   source : [{ name: 'Ars Technica', url: 'ars-technica', subscribed: false},
-                            { name: 'Engadget', url: 'engadget', subscribed: false},
-                            { name: 'Hacker News', url: 'hacker-news', subscribed: false},
+                            { name: 'Engadget', url: 'engadget', subscribed: true},
+                            { name: 'Hacker News', url: 'hacker-news', subscribed: true},
                             { name: 'Recode', url: 'recode', subscribed: false},
                             { name: 'T3n', url: 't3n', subscribed: false}
                         ],
@@ -24,7 +24,7 @@ export class DefaultNews  {
                 {
                   category : 'Sports',
                   source : [{ name: 'ESPN', url: 'espn', subscribed: false},
-                            { name: 'BBC Sport', url: 'bbc-sport', subscribed: false},
+                            { name: 'BBC Sport', url: 'bbc-sport', subscribed: true},
                             { name: 'Four Four Two', url: 'four-four-two', subscribed: false},
                             { name: 'NFL', url: 'nfl-news', subscribed: false},
                             { name: 'Talksport', url: 'talksport', subscribed: false}

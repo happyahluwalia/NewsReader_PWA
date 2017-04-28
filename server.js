@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/dist'));
 const ForceSSL = function() {
   return function (req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
+      res.contentType(req.params.file);
       return res.redirect(['https://', req.get('Host') + req.url].join(''));
     }
     next();
