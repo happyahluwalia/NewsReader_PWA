@@ -16,6 +16,7 @@
   "private": true,
   "dependencies": {
     "@angular/cli": "1.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/animations": "^4.0.1",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -30,7 +31,8 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "typescript": "~2.2.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
