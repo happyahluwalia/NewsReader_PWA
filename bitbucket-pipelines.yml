@@ -4,7 +4,7 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: node:7.7.1
-clone: 
+clone:
   depth: 5
 pipelines:
   default:
@@ -12,5 +12,4 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - npm install
           - npm test
-          - git checkout -b dummy
           - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
