@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "ng": "ng",
+    "heroku-prebuild":"rm -rf node_modules && npm cache clean",
     "start": "node server.js",
     "lint": "ng lint",
     "postinstall": "ng build --aot -prod"
