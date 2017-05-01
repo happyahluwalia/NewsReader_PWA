@@ -77,7 +77,11 @@ export class PersonalPreferencesService {
                                  if (myPref.category === category) {
                                       myPref.source.forEach(element => {
                                            if (element.subscribed) {
-                                                source.push(this.dataService.getNewswithURL(element.url));
+                                               const myObservable = this.dataService.getNewswithURL(element.url);
+                                               source.push(myObservable.map(function test(data, index) {
+                                                                                           return data.splice(0, myPref.NoOfArticles);
+                                                                                       }));
+                                               // source.push(this.dataService.getNewswithURL(element.url));
                                               }
                                         });
                                     }

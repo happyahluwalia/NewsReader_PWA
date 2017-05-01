@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { PersonalPreferencesService } from './../shared/personal-preferences.service';
 import { SocialShareComponent } from './../shared/social-share/social-share.component';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -10,15 +10,18 @@ import { MdTooltipModule, MdDialog, MdDialogConfig } from '@angular/material';
 
 import { News } from '../model/news.model';
 import { DataService } from '../shared/data.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'nw-newspane',
   templateUrl: './newspane.component.html',
   styleUrls: ['./newspane.component.css']
 })
-export class NewspaneComponent implements OnInit {
+export class NewspaneComponent implements OnInit, OnDestroy {
+
   @Input() currentTopic = 'General';
   news: News[] = [];
+  newsSubscription: Subscription;
   favoriteTopic = [];
   navLinks = ['Favorites', 'Preferences', 'Help', 'About'];
   constructor(public dataService: DataService,
@@ -41,7 +44,7 @@ export class NewspaneComponent implements OnInit {
     }
 
   getHomePageNews(category: string) {
-    this.personalPreference.getHomePageNews(category).subscribe(
+    this.newsSubscription = this.personalPreference.getHomePageNews(category).subscribe(
        (data: any[]) => this.news = this.news.concat(data),
        (error) => console.log('error getting home page')
     );
@@ -67,6 +70,10 @@ export class NewspaneComponent implements OnInit {
   navigate(url: string) {
     window.open(url);
   }
+
+   ngOnDestroy(): void {
+      this.newsSubscription.unsubscribe();
+    }
 
 }
 
