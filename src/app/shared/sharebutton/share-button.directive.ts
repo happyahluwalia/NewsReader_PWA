@@ -1,8 +1,9 @@
+import { ShareProvider } from '../sharebutton/helper/share-provider.enum';
+import { Helper } from '../sharebutton/helper/share-helper';
 import { ShareButtonService } from './service/share-button.service';
 import { ShareArgs } from './helper/share-args';
-import { ShareProvider } from 'app/sharebutton/helper/share-provider.enum';
 import './helper/share-helper';
-import { Helper } from 'app/sharebutton/helper/share-helper';
+
 
 import { Directive, Input, EventEmitter, Output, HostListener } from '@angular/core';
 

@@ -1,4 +1,5 @@
-import { ShareProvider } from 'app/sharebutton/helper/share-provider.enum';
+import { ShareProvider } from '../helper/share-provider.enum';
+
 import { ShareArgs } from './share-args';
 
 export module Helper {

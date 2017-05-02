@@ -18,13 +18,9 @@ export class SocialDirective {
       this.onClick();
   }
 
-  constructor(private eleRef: ElementRef, private render: Renderer2) {
+  constructor(private eleRef: ElementRef, private render: Renderer2) {}
 
-  }
-
-
-
-  onClick() {
+ onClick() {
     if (this.socialMedia === 'twitter') {
         this.title = this.title.slice(0, 100);
         const tweet = this.title + ' ' + this.baseURL;

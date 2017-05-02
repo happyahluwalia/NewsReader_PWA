@@ -66,16 +66,16 @@ export class PersonalPreferencesService {
   getHomePageNews(category: string) {
       let bgetDefaultHomePage = true;
       const source: Observable<any>[] = [];
-
       // Get users preferences
       const storedSettings = this.persistenceService.get('settings');
-      // console.log(storedSettings);
+//       console.log(storedSettings);
+
       if (storedSettings) {
          Object.keys(storedSettings).map(key => {
                                  const myPref: NewsPref = storedSettings[key];
                                  // Find the home page urls he has subscribed too..
                                  if (myPref.category === category) {
-                                      myPref.source.forEach(element => {
+                                      myPref.source.map(element => {
                                            if (element.subscribed) {
                                                const myObservable = this.dataService.getNewswithURL(element.url);
                                                source.push(myObservable.map(function test(data, index) {

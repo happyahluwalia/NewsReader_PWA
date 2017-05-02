@@ -1,10 +1,9 @@
 import { AboutComponent } from './static/about/about.component';
 import { HelpComponent } from './static/help/help.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { SettingsComponent } from './settings/settings.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 
 const routes: Routes = [
@@ -15,11 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    component: SettingsComponent
+    loadChildren: './settings/settings.module#SettingsModule'
   },
   {
     path: 'favorite',
-    component: FavoriteComponent
+    loadChildren: './favorite/favorite.module#FavoriteModule'
   },
   {
     path: 'help',
@@ -32,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
