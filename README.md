@@ -15,6 +15,9 @@ ng new newsreader --dry-run true --skip-tests true --prefix nw --routing true
 # Step 2 - Beautify the UI using angular material and also create a preferences section
 https://github.com/EladBezalel/material2-start/blob/workshop/steps/STEP_1.md
 
+# Step 3 - Modularized the application (some stuff still pending)
+
+# Step 4 - Convert to PWA by using service workers & manifest files
 
 Install Angular Material dependencies
 # Ref https://github.com/angular/material2/blob/master/guides/getting-started.md

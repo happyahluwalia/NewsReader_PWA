@@ -1,0 +1,22 @@
+{
+  "name" : "HappyNews",
+  "short_name" : "Happy",
+  "icons" :[
+        {
+            "src": "/assets/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+  ],
+  "background_color": "#c5afeb",
+  "description": "A simply app the only gives happy news.",
+  "display" : "standalone",
+  "theme_color": "#c5afeb",
+  "orientation" : "portrait-primary",
+  "start_url" : "./?utm_source=web_app_manifest"
+}
