@@ -1,36 +1,26 @@
+<ng-template md-tab-label>
+  News topics
+</ng-template>
+<md-card>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-    <ng-template md-tab-label>
-      News topics
-    </ng-template>
- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-
-<md-tab-group>
-  <md-tab *ngFor="let news of newsList; let i=index"
-            label={{news.category}}
-            ngModelGroup={{news.category}}
-            #{{news.category}}="ngModelGroup"
-            >
-      <h3 color="accent">Select news sources</h3>
-        <br>
-         <section class="example-section" ngModelGroup="news">
-              <md-checkbox ngModel class="example-margin"
-                           name={{news.category}}_{{x}}
-                          *ngFor="let source of news.source; let x=index"
-                           [(ngModel)]="source.subscribed">
-                  {{source.name}}
-              </md-checkbox>
-          </section>
+    <md-tab-group>
+      <md-tab *ngFor="let news of newsList; let i=index" label={{news.category}} ngModelGroup={{news.category}} #{{news.category}}="ngModelGroup">
+        <h3 color="accent">Select news sources</h3>
+        <section ngModelGroup="news">
+          <md-checkbox ngModel class="example-margin" name={{news.category}}_{{x}} *ngFor="let source of news.source; let x=index"
+            [(ngModel)]="source.subscribed">
+            {{source.name}}
+          </md-checkbox>
+        </section>
 
         <h3>Number of new articles from each source</h3>
-        <md-slider ngModel name="numberofArticles_{{i}}"
-                  min="1" max="5" step="1"
-                  value={{news.NoOfArticles}} tickInterval="auto"
-                  thumbLabel>
+        <md-slider ngModel name="numberofArticles_{{i}}" min="1" max="5" step="1" value={{news.NoOfArticles}} tickInterval="auto"
+          thumbLabel>
         </md-slider>
         <br>
-    </md-tab>
-  </md-tab-group>
-  <br>
-  <button md-raised-button color="primary" type="submit" >Save</button>
- </form>
-
+      </md-tab>
+    </md-tab-group>
+    <button md-raised-button color="primary" type="submit">Save</button>
+  </form>
+</md-card>

@@ -7,7 +7,8 @@
     "start": "node server.js",
     "lint": "ng lint",
     "postinstall": "ng build --prod --aot && npm run precache",
-    "precache": "sw-precache --config=sw-precache-config.js"
+    "precache": "sw-precache --config=sw-precache-config.js",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "engines": {
     "node": "7.7.1",
@@ -49,12 +50,13 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "~2.2.0",
+    "webpack-bundle-analyzer": "^2.6.0"
   }
 }

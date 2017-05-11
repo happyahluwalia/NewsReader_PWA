@@ -6,47 +6,36 @@
       </md-nav-list>
     </md-sidenav>-->
 
-        <md-card  *ngFor="let currentnews of news" fxLayout="row"
-              fxLayout.sm="column"
-              fxLayoutGap="16px">
-          <md-card  >
-          <div fxLayout="row" >
-              <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
-              <md-card-header fxFlex>
-                <md-card-title (click)="navigate(currentnews.url)" >{{currentnews.title}}</md-card-title>
-                <md-card-subtitle>{{currentnews.publishedAt | date: "MM/dd/yyyy hh:mm"}}</md-card-subtitle>
-              </md-card-header>
-          </div>
-          <div >
-            <br/>
-            <md-card-content >
-                {{currentnews.description}}
-            </md-card-content>
-          </div>
-          <md-card-actions>
-            <!--https://material.angular.io/components/component/tooltip-->
-              <i class="material-icons md-dark orange600 example-tooltip-host"
-                  mdTooltip="Share news"
-                       [mdTooltipPosition]="'above'"
-                       (click)="openSharePopup(currentnews.url, currentnews.title)" >
+<md-card *ngFor="let currentnews of news" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+  <md-card>
+    <div fxLayout="row">
+      <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
+      <md-card-header fxFlex>
+        <md-card-title (click)="navigate(currentnews.url)">{{currentnews.title}}</md-card-title>
+        <md-card-subtitle>{{currentnews.publishedAt | date: "MM/dd/yyyy hh:mm"}}</md-card-subtitle>
+      </md-card-header>
+    </div>
+    <div>
+      <br/>
+      <md-card-content>
+        {{currentnews.description}}
+      </md-card-content>
+    </div>
+    <md-card-actions>
+      <!--https://material.angular.io/components/component/tooltip-->
+      <i class="material-icons md-dark orange600 example-tooltip-host" mdTooltip="Share news" [mdTooltipPosition]="'above'" (click)="openSharePopup(currentnews.url, currentnews.title)">
                   share</i>
-                  <i *ngIf="currentnews.favorite"
-                          (click)="unmarkFavorite(currentnews)"
-                          class="material-icons md-dark orange600"
-                          mdTooltip="Mark Unfavorite"
-                       [mdTooltipPosition]="'above'">
+      <i *ngIf="currentnews.favorite" (click)="unmarkFavorite(currentnews)" class="material-icons md-dark orange600" mdTooltip="Mark Unfavorite"
+        [mdTooltipPosition]="'above'">
                        favorite
                   </i>
-                  <i *ngIf="!currentnews.favorite"
-                          (click)="markFavorite(currentnews)"
-                          class="material-icons md-dark md-inactive"
-                          mdTooltip="Mark Favorite"
-                       [mdTooltipPosition]="'above'">
+      <i *ngIf="!currentnews.favorite" (click)="markFavorite(currentnews)" class="material-icons md-dark md-inactive" mdTooltip="Mark Favorite"
+        [mdTooltipPosition]="'above'">
                        favorite
                   </i>
-          </md-card-actions>
-      </md-card>
-   </md-card>
+    </md-card-actions>
+  </md-card>
+</md-card>
 
 <!--
 <nw-favorite (onCategorySelection)="getSelectedTopic($event)"></nw-favorite>
