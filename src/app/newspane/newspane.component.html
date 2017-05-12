@@ -2,14 +2,14 @@
   <md-card>
     <div fxLayout="row">
       <img md-card-md-image src={{currentnews.urlToImage}} fxflex="20">
-      <md-card-header fxFlex>
-        <md-card-title (click)="navigate(currentnews.url)">{{currentnews.title}}</md-card-title>
+      <md-card-header fxFlex class="card-title">
+        <md-card-title (click)="navigate(currentnews.url)"><b>{{currentnews.title}}</b></md-card-title>
         <md-card-subtitle>{{currentnews.publishedAt | date: "MM/dd/yyyy hh:mm"}}</md-card-subtitle>
       </md-card-header>
     </div>
     <div>
       <br/>
-      <md-card-content>
+      <md-card-content class="card-content">
         {{currentnews.description}}
       </md-card-content>
     </div>
