@@ -59,6 +59,4 @@ export class AppModule { }
 // TODO : Newspane component to be encapsulated in module
 // TODO : On selecting a favorite topic the news panel should scroll to the top
 // TODO : Fixup UI when no http connection
-// TODO : Fix the social share component into a different module such that it does not get loaded with app module,
-//        Refer to notes on AOT compilation - https://material.angular.io/components/component/dialog
 

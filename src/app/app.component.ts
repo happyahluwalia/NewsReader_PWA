@@ -12,7 +12,6 @@ import { News } from './model/news.model';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'body',
- // template: '<h1>{{title}}</h1>'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -29,11 +28,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // https://angular.io/docs/ts/latest/cookbook/set-document-title.html
     this.setTitle('Happy  News');
-    /* this.dataService.getNews(topic.title).subscribe(
-       (data: any[] ) => this.news = data,
-       (error) => console.log(error)
-     )*/
-   //  this.getSelectedTopic({title: 'default'});
   }
 
   private setTitle(strTitle: string) {
